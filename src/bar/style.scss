@@ -28,13 +28,21 @@ button {
 
 .SysTray {
   margin-top: 0;
+  padding-top: 3px;
+  margin-bottom: 4px;
   margin-right: 0;
+  background-color: #3b3834;
+  border-radius: 0 0 7px 7px;
 }
 
 .AudioSlider {
   background-color: #3b3834;
   border-radius: 0 0 7px 7px;
   margin-bottom: 4px;
+  padding: 0;
+  icon {
+    padding-top: 2px;
+  }
   button {
     padding-right: 0;
   }

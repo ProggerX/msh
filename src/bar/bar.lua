@@ -4,7 +4,7 @@ local Anchor = require("astal.gtk3").Astal.WindowAnchor
 local Hyprland = astal.require("AstalHyprland")
 local Wp = astal.require("AstalWp")
 local Battery = astal.require("AstalBattery")
--- local Tray = astal.require("AstalTray")
+local Tray = astal.require("AstalTray")
 local Variable = astal.Variable
 local GLib = astal.require("GLib")
 
@@ -92,7 +92,7 @@ local function battery()
 	})})
 end
 
---[[ local function systray()
+local function systray()
 	local tray = Tray.get_default()
 
 	return Widget.Box({
@@ -100,6 +100,7 @@ end
 		spacing = 3,
 		bind(tray, "items"):as(function(items)
 			return map(items, function(item)
+				if item.title ~= nil then
 				return Widget.MenuButton({
 					tooltip_markup = bind(item, "tooltip_markup"),
 					use_popover = false,
@@ -110,12 +111,11 @@ end
 					Widget.Icon({
 						gicon = bind(item, "gicon"),
 					}),
-				})
+				}) else return {} end
 			end)
 		end),
 	})
 end
-]]
 
 local function get_current_playing()
     local handle = io.popen("mpc | grep -E '.+ +- +.+'")
@@ -159,7 +159,9 @@ return function()
 			expand = true,
 			Widget.Box({
 				margin_left = 5,
-				workspaces()
+				spacing = 15,
+				workspaces(),
+				systray()
 			}),
 			Widget.Box({
 				music()
