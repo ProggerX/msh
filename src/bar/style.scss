@@ -14,7 +14,7 @@ button {
   button {
     border: solid transparent;
     border-width: 0 2px 2px 2px;
-    padding: 3px 5px;
+    padding: 0px 7px;
   }
   button.focused {
     border: solid colors.$fg;
@@ -32,8 +32,10 @@ button {
 }
 
 .AudioSlider {
+  background-color: #3b3834;
+  border-radius: 0 0 7px 7px;
+  margin-bottom: 4px;
   button {
     padding-right: 0;
-    background-color: colors.$bg;
   }
 }

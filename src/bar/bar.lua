@@ -3,6 +3,7 @@ local Widget = require("astal.gtk3.widget")
 local Anchor = require("astal.gtk3").Astal.WindowAnchor
 local Hyprland = astal.require("AstalHyprland")
 local Wp = astal.require("AstalWp")
+local Battery = astal.require("AstalBattery")
 -- local Tray = astal.require("AstalTray")
 local Variable = astal.Variable
 local GLib = astal.require("GLib")
@@ -72,6 +73,23 @@ local function wireplumber()
 			value = bind(speaker, "volume"),
 		}),
 	})
+end
+
+local function battery()
+	local bat = Battery.get_default()
+
+	return Widget.Button({Widget.Box({
+		class_name = "Battery",
+		visible = bind(bat, "is-present"),
+		Widget.Icon({
+			icon = bind(bat, "battery-icon-name"),
+		}),
+		Widget.Label({
+			label = bind(bat, "percentage"):as(
+				function(p) return tostring(math.floor(p * 100)) .. " %" end
+			),
+		}),
+	})})
 end
 
 --[[ local function systray()
@@ -149,7 +167,9 @@ return function()
 			Widget.Box({
 				halign = 2,
 				margin_right = 5,
+				spacing = 15,
 				wireplumber(),
+				battery(),
 				datetime("%H:%M :: %A, %e.%m.%y")
 			}),
 		})

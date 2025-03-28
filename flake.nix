@@ -20,6 +20,7 @@
         astal.packages.${system}.hyprland
         astal.packages.${system}.tray
         astal.packages.${system}.wireplumber
+        astal.packages.${system}.battery
         pkgs.dart-sass
       ];
     };
