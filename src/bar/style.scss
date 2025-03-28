@@ -1,0 +1,39 @@
+@use "../colors";
+
+.Bar {
+  border-radius: 0 0 10px 10px;
+}
+
+button {
+  border-radius: 0 0 7px 7px;
+  margin-bottom: 4px;
+}
+
+.Workspaces {
+  margin-top: 0;
+  button {
+    border: solid transparent;
+    border-width: 0 2px 2px 2px;
+    padding: 3px 5px;
+  }
+  button.focused {
+    border: solid colors.$fg;
+    border-width: 0 2px 2px 2px;
+  }
+}
+
+.DateTime {
+  margin-top: 0;
+}
+
+.SysTray {
+  margin-top: 0;
+  margin-right: 0;
+}
+
+.AudioSlider {
+  button {
+    padding-right: 0;
+    background-color: colors.$bg;
+  }
+}

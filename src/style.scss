@@ -1,0 +1,9 @@
+@use "colors";
+@use "bar/style";
+
+.Window {
+  color: colors.$fg;
+  padding-top: 0;
+  padding-bottom: 3px;
+  background-color: colors.$bg;
+}
